@@ -6,7 +6,7 @@ Every rule has an ID; reference it in code comments and tests (e.g. `// R-C2`).
 
 - **R-C1 — Single ledger.** Every movement of money is one `CashEntry` row. Nothing else stores money totals.
 - **R-C2 — Summary cards** (always all-time; table filters never change them):
-  - `Sisa Uang Tunai Tante = initial capital + Σ income − Σ expense`
+  - `Saldo Kas = initial capital + Σ income − Σ expense`
   - `Total Uang Masuk Lain = Σ income, excluding the initial capital entry` (sales, extra capital, anything else)
   - `Total Uang Keluar = Σ expense`
   - `Isi Gudang Bebek = Σ kg in − Σ kg out` and `Σ ekor in − Σ ekor out`, across all duck types _(Phase 2; shows 0 before)_

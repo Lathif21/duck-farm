@@ -7,7 +7,7 @@
 
 ## Language
 
-- UI text in Bahasa Indonesia, written as everyday speech ("Uang Masuk", "Sisa Uang Tunai Tante"), never accounting jargon ("debit", "kredit", "jurnal").
+- UI text in Bahasa Indonesia, written as everyday speech ("Uang Masuk", "Saldo Kas"), never accounting jargon ("debit", "kredit", "jurnal").
 - Code identifiers, comments, commits and docs in English.
 - Keep all UI strings for a screen in that screen's component; no i18n framework (single language app).
 

@@ -21,7 +21,7 @@
 			class="pointer-events-none absolute -right-2 -bottom-6 font-display text-8xl font-extrabold text-ink/10 select-none md:text-9xl"
 			>KAS</span
 		>
-		<h2 class="relative text-base font-bold text-ink md:text-lg">Sisa Uang Tunai Tante</h2>
+		<h2 class="relative text-base font-bold text-ink md:text-lg">Saldo Kas</h2>
 		<p
 			class="tabular relative mt-1 font-display text-[32px] leading-tight font-extrabold break-words md:text-[40px]"
 		>

@@ -12,7 +12,7 @@ A family is building a **cold storage room** (−18 °C to −20 °C) for **duck
 ### Tante — owner of the capital, main treasurer
 
 - **Pains:** money "leaks" in small amounts unnoticed; misreads zeros when typing big numbers on a phone (1500000 = 150 rb or 1,5 jt?); tiny tables that need sideways scrolling; doesn't understand contractor terms ("Breather Valve", "Styrofoam XPS").
-- **Needs:** a big "Sisa Uang Tunai Tante" box at the top; automatic thousand separators while typing; a plain-language explanation for every shopping-list item, shown in full.
+- **Needs:** a big "Saldo Kas" box at the top; automatic thousand separators while typing; a plain-language explanation for every shopping-list item, shown in full.
 
 ### Family members — site supervisors & warehouse managers
 

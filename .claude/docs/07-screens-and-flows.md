@@ -16,7 +16,7 @@ All labels below are the exact UI text (Indonesian). Behaviour rules: `04-busine
 ## Shared layout (every signed-in page)
 
 1. **Top:** app name "Pembukuan Cold Storage Bebek", user name, "Keluar" (sign out). Laptop: brown top bar with the 3 menu links.
-2. **Summary cards (R-C2):** hero "Sisa Uang Tunai Tante"; then "Total Uang Masuk Lain", "Total Uang Keluar", "Isi Gudang Bebek" (`95 Kg (100 Ekor / Pak)`).
+2. **Summary cards (R-C2):** hero "Saldo Kas"; then "Total Uang Masuk Lain", "Total Uang Keluar", "Isi Gudang Bebek" (`95 Kg (100 Ekor / Pak)`).
 3. **Page content.**
 4. **Phone:** floating bottom bar "1. Uang Kas", "2. Stok Bebek", "3. Daftar Belanja" (PRD numbering kept). Page content gets bottom padding so the bar never covers the last row.
 

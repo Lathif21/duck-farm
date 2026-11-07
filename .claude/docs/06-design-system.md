@@ -80,7 +80,7 @@ The reference uses a bold, rounded display face. **Baloo 2** (headings, big numb
 
 ## Components
 
-- **Summary cards.** "Sisa Uang Tunai Tante" is the hero: full-width `primary` card, `ink` text, hero number, faint large watermark-style text in the corner (echoing Eggsy's "SINCE 1996"), e.g. "KAS". The other three: white cards, label in `brown`, value in `charcoal`; on phone they sit in a 3-column row under the hero (2 + 1 if too narrow), never scrolling sideways.
+- **Summary cards.** "Saldo Kas" is the hero: full-width `primary` card, `ink` text, hero number, faint large watermark-style text in the corner (echoing Eggsy's "SINCE 1996"), e.g. "KAS". The other three: white cards, label in `brown`, value in `charcoal`; on phone they sit in a 3-column row under the hero (2 + 1 if too narrow), never scrolling sideways.
 - **Buttons.** Primary: `primary` fill + `ink` text. Record-to-cash: `success` fill + white text (PRD "tombol hijau besar"). Secondary: white fill, `brown` 2px border + `brown` text (like "CHECK THE FARM"). Danger: `danger` text, white fill; filled red only inside the delete confirmation.
 - **Inputs.** White, 2px `line` border (meets the 3:1 rule for input outlines), focus ring `primary`, 17px bold. Money inputs right-aligned with "Rp" prefix; kg inputs with "Kg" suffix.
 - **Combobox (pick or add new).** Searchable dropdown; last row "+ Tambah "{typed text}"" in `primary-deep`.

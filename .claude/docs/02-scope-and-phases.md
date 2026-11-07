@@ -5,7 +5,7 @@ Build Phase 1 first; Phase 2 follows. Phase 2 has open questions (`11`) that mus
 ## Phase 1 — Construction & Cash Book (Decided)
 
 - Login (admin accounts only).
-- Summary cards: Sisa Uang Tunai Tante, Total Uang Masuk Lain, Total Uang Keluar, Isi Gudang Bebek (shows 0 until Phase 2).
+- Summary cards: Saldo Kas, Total Uang Masuk Lain, Total Uang Keluar, Isi Gudang Bebek (shows 0 until Phase 2).
 - **Menu 1 — Buku Uang Kas:** manual income/expense entries, create/edit/delete, categories via "pick or add new" dropdown (separate lists for income and expense, start empty), optional receipt upload on every expense.
 - **Menu 3 — Daftar Belanja Bangunan:** admin-editable shopping list with work sections, plain-language explanations, record purchase → cash book in one click, buy again with a reminder of the previous purchase, add new items.
 - Initial capital Rp 70.000.000 entry (edit rules TBD — `11`, T1).
