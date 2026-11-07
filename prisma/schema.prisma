@@ -1,0 +1,158 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/lib/server/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  // Connection URLs live in prisma.config.ts (Prisma 7). See 08-tech-architecture.md.
+}
+
+enum Role {
+  ADMIN
+}
+
+enum Direction {
+  IN
+  OUT
+}
+
+enum CashSource {
+  INITIAL_CAPITAL
+  MANUAL
+  SHOPPING
+  DUCK
+}
+
+model User {
+  id           String    @id @default(cuid())
+  username     String    @unique
+  name         String
+  passwordHash String
+  role         Role      @default(ADMIN)
+  createdAt    DateTime  @default(now())
+  sessions     Session[]
+}
+
+model Session {
+  id        String   @id // SHA-256 of the session token, never the raw token
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+
+  @@index([userId])
+}
+
+// Failed logins, for the rate limit: 5 per username per 15 minutes (08, Auth).
+// A table rather than memory, because Vercel functions don't share memory.
+model LoginAttempt {
+  id          String   @id @default(cuid())
+  usernameKey String   // lower-case trimmed username
+  createdAt   DateTime @default(now())
+
+  @@index([usernameKey, createdAt])
+}
+
+model CashCategory {
+  id        String      @id @default(cuid())
+  direction Direction
+  name      String      // as first typed, trimmed
+  nameKey   String      // lower-case trimmed name, for uniqueness (R-C5)
+  createdAt DateTime    @default(now())
+  entries   CashEntry[]
+
+  @@unique([direction, nameKey])
+}
+
+model CashEntry {
+  id          String        @id @default(cuid())
+  date        DateTime      @db.Date
+  direction   Direction
+  source      CashSource    @default(MANUAL)
+  categoryId  String?       // MANUAL only; linked rows use a source label (R-C6)
+  category    CashCategory? @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  description String?       // MANUAL / INITIAL_CAPITAL only; linked rows read it from the source (R-L5)
+  quantity    Decimal?      @db.Decimal(10, 2)
+  unitPrice   Int?          // rupiah
+  total       Int           // rupiah, > 0
+
+  receiptUrl      String?   // Vercel Blob URL (expenses only)
+  receiptPathname String?   // Blob pathname, used to delete the file
+
+  shoppingPurchaseId String?           @unique
+  shoppingPurchase   ShoppingPurchase? @relation(fields: [shoppingPurchaseId], references: [id], onDelete: Cascade)
+  duckMovementId     String?           @unique
+  duckMovement       DuckMovement?     @relation(fields: [duckMovementId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([date])
+  @@index([direction, date])
+}
+
+model WorkSection {
+  id        String         @id @default(cuid())
+  number    Int            @unique
+  name      String
+  nameKey   String         @unique
+  createdAt DateTime       @default(now())
+  items     ShoppingItem[]
+}
+
+model ShoppingItem {
+  id          String             @id @default(cuid())
+  number      Int                @unique // never reused (R-SH2)
+  name        String
+  explanation String
+  unit        String             // "Unit", "Roll", "Meter", "Hari", ...
+  sectionId   String
+  section     WorkSection        @relation(fields: [sectionId], references: [id], onDelete: Restrict)
+  isSeed      Boolean            @default(false)
+  purchases   ShoppingPurchase[]
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+}
+
+model ShoppingPurchase {
+  id        String       @id @default(cuid())
+  itemId    String
+  item      ShoppingItem @relation(fields: [itemId], references: [id], onDelete: Restrict) // R-SH6
+  date      DateTime     @db.Date
+  quantity  Decimal      @db.Decimal(10, 2)
+  unitPrice Int
+  total     Int
+  cashEntry CashEntry?
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+
+  @@index([itemId])
+  @@index([date])
+}
+
+model DuckType {
+  id        String         @id @default(cuid())
+  name      String
+  nameKey   String         @unique
+  createdAt DateTime       @default(now())
+  movements DuckMovement[]
+}
+
+model DuckMovement {
+  id          String     @id @default(cuid())
+  duckTypeId  String
+  duckType    DuckType   @relation(fields: [duckTypeId], references: [id], onDelete: Restrict)
+  direction   Direction  // IN = beli (masuk gudang), OUT = jual (keluar gudang)
+  date        DateTime   @db.Date
+  partyName   String     // farmer or buyer
+  heads       Int        // ekor / pak
+  weightGrams Int        // kg × 1000
+  pricePerKg  Int        // rupiah
+  total       Int        // round(weightGrams × pricePerKg / 1000)
+  cashEntry   CashEntry?
+  createdAt   DateTime   @default(now())
+  updatedAt   DateTime   @updatedAt
+
+  @@index([duckTypeId])
+  @@index([date])
+}

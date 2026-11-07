@@ -1,0 +1,93 @@
+@import 'tailwindcss';
+
+/* Design tokens: .claude/docs/06-design-system.md. Light mode only. */
+@theme {
+	--color-primary: #fa8f13;
+	--color-primary-light: #fd9d33;
+	--color-primary-deep: #b85e00;
+	--color-yellow: #fbc540;
+	--color-cream: #fff6df;
+	--color-brown: #7c4200;
+	--color-charcoal: #404040;
+	--color-ink: #2a1600;
+	--color-success: #1e7a46;
+	--color-danger: #c62828;
+	--color-danger-soft: #fdecec;
+	--color-line: #9c7a4a;
+
+	--font-display: 'Baloo 2', ui-rounded, system-ui, sans-serif;
+	--font-body: 'Nunito', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+	--radius-card: 1.25rem;
+	--radius-pill: 9999px;
+
+	--shadow-card: 0 4px 16px rgb(124 66 0 / 0.08);
+}
+
+@layer base {
+	html {
+		-webkit-text-size-adjust: 100%;
+	}
+	body {
+		@apply bg-cream font-body text-base font-medium text-charcoal;
+		overflow-x: hidden;
+	}
+	h1,
+	h2,
+	h3 {
+		@apply font-display text-brown;
+	}
+	:focus-visible {
+		outline: 3px solid var(--color-primary);
+		outline-offset: 2px;
+	}
+	.tabular {
+		font-variant-numeric: tabular-nums;
+	}
+}
+
+/* Shared component classes. @utility (not @layer components) so they can be @apply-ed. */
+@utility card {
+	@apply rounded-card bg-white shadow-card;
+}
+@utility label {
+	@apply mb-1 block text-sm font-semibold text-brown;
+}
+/* Inputs: 17px bold so iOS/Android never auto-zoom (ui-rules). */
+@utility input {
+	@apply min-h-12 w-full rounded-xl border-2 border-line bg-white px-3 py-2 text-[17px] font-bold text-ink;
+	&:focus {
+		@apply border-primary outline-none;
+		box-shadow: 0 0 0 3px rgb(250 143 19 / 0.35);
+	}
+	&[readonly] {
+		@apply bg-cream;
+	}
+}
+@utility btn {
+	@apply inline-flex min-h-12 min-w-11 cursor-pointer items-center justify-center gap-2 rounded-pill px-5 py-2 text-base font-extrabold transition-colors disabled:cursor-not-allowed disabled:opacity-60;
+}
+@utility btn-primary {
+	@apply btn bg-primary text-ink hover:bg-primary-light;
+}
+@utility btn-success {
+	@apply btn bg-success text-white hover:brightness-110;
+}
+@utility btn-danger-fill {
+	@apply btn bg-danger text-white hover:brightness-110;
+}
+@utility btn-secondary {
+	@apply btn border-2 border-brown bg-white text-brown hover:bg-cream;
+}
+@utility btn-danger {
+	@apply btn border-2 border-danger/40 bg-white text-danger hover:bg-danger-soft;
+}
+@utility btn-ghost {
+	@apply btn bg-transparent px-3 text-primary-deep underline-offset-2 hover:underline;
+}
+@utility alert {
+	@apply flex items-start gap-2 rounded-xl border-l-4 border-danger bg-danger-soft px-3 py-2 font-semibold text-danger;
+}
+@utility field-error {
+	@apply mt-1 text-sm font-bold text-danger;
+}

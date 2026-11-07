@@ -1,0 +1,118 @@
+{
+	"sections": [
+		{
+			"number": 1,
+			"name": "Lantai & Insulasi"
+		},
+		{
+			"number": 2,
+			"name": "Dinding & Panel"
+		},
+		{
+			"number": 3,
+			"name": "Pintu"
+		},
+		{
+			"number": 4,
+			"name": "Panel Listrik & Pengaman"
+		},
+		{
+			"number": 5,
+			"name": "Mesin Pendingin"
+		},
+		{
+			"number": 6,
+			"name": "Perlengkapan Gudang"
+		},
+		{
+			"number": 7,
+			"name": "Tenaga Kerja"
+		}
+	],
+	"items": [
+		{
+			"number": 1,
+			"section": 1,
+			"name": "Styrofoam XPS (Insulasi Lantai)",
+			"unit": "Lembar",
+			"explanation": "Papan busa padat yang dipasang di bawah lantai ruang beku. Gunanya menahan dingin supaya tidak bocor ke tanah dan tanah di bawahnya tidak ikut membeku lalu membuat lantai retak atau terangkat."
+		},
+		{
+			"number": 2,
+			"section": 1,
+			"name": "Pipa Udara Bawah Lantai",
+			"unit": "Batang",
+			"explanation": "Pipa yang ditanam di bawah lantai agar udara luar bisa mengalir. Ini menjaga tanah di bawah ruang beku tetap tidak membeku, sehingga lantai tidak retak dan bangunan tetap kuat."
+		},
+		{
+			"number": 3,
+			"section": 2,
+			"name": "Sealant Anti-Jamur (Food Grade)",
+			"unit": "Tube",
+			"explanation": "Lem karet untuk menutup celah sambungan dinding dan sudut. Celah yang terbuka membuat dingin bocor dan menjadi tempat jamur tumbuh. Pilih yang aman untuk makanan."
+		},
+		{
+			"number": 4,
+			"section": 2,
+			"name": "Siku Aluminium Penutup Sambungan Panel",
+			"unit": "Batang",
+			"explanation": "Lis siku yang dipasang di sudut dinding, lantai, dan plafon. Gunanya menutup sambungan panel supaya rapat, gampang dibersihkan, dan tidak ada kotoran yang menumpuk."
+		},
+		{
+			"number": 5,
+			"section": 2,
+			"name": "Katup Penyeimbang Udara Dinding (Breather Valve)",
+			"unit": "Unit",
+			"explanation": "Alat wajib di dinding agar tekanan udara tetap seimbang, sehingga dinding panel tidak melengkung kempes dan pintu ringan dibuka."
+		},
+		{
+			"number": 6,
+			"section": 3,
+			"name": "Heater Karet Pintu",
+			"unit": "Set",
+			"explanation": "Kabel pemanas kecil di bingkai pintu. Tanpa ini, karet pintu bisa membeku dan menempel sehingga pintu susah dibuka dan karetnya cepat robek."
+		},
+		{
+			"number": 7,
+			"section": 3,
+			"name": "Tirai Plastik PVC Pintu",
+			"unit": "Set",
+			"explanation": "Tirai lembaran plastik tebal yang digantung di pintu. Saat pintu dibuka untuk keluar-masuk barang, tirai ini menahan udara dingin agar tidak banyak terbuang, jadi listrik lebih hemat."
+		},
+		{
+			"number": 8,
+			"section": 4,
+			"name": "Kabel Kontrol",
+			"unit": "Roll",
+			"explanation": "Kabel kecil yang menghubungkan panel listrik dengan mesin pendingin, kipas, dan sensor suhu. Gunanya supaya mesin bisa diatur dan menyala-mati otomatis."
+		},
+		{
+			"number": 9,
+			"section": 4,
+			"name": "Termometer Digital & Alarm Suhu",
+			"unit": "Unit",
+			"explanation": "Layar penunjuk suhu ruang beku dengan bunyi alarm. Kalau suhu naik karena mesin rusak atau pintu tidak tertutup, alarm berbunyi sebelum daging bebek sempat rusak."
+		},
+		{
+			"number": 10,
+			"section": 5,
+			"name": "Pipa Buang Air Defrost dengan Pemanas",
+			"unit": "Meter",
+			"explanation": "Pipa pembuangan air dari mesin pendingin saat bunga es dicairkan. Diberi kabel pemanas supaya airnya tidak membeku di dalam pipa dan tumpah ke lantai ruang beku."
+		},
+		{
+			"number": 11,
+			"section": 6,
+			"name": "Palet Plastik",
+			"unit": "Buah",
+			"explanation": "Alas plastik untuk menaruh karton daging bebek. Daging tidak menempel ke lantai yang membeku, udara dingin bisa mengalir di bawahnya, dan tidak busuk seperti palet kayu."
+		},
+		{
+			"number": 12,
+			"section": 7,
+			"name": "Ongkos Harian Tukang",
+			"unit": "Hari",
+			"explanation": "Upah harian tukang dan pembantu tukang. Dicatat per hari kerja supaya total biaya tenaga kerja kelihatan jelas dan tidak tercecer."
+		}
+	]
+}
