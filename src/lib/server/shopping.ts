@@ -105,7 +105,7 @@ async function resolveSection(tx: Tx, sectionId: string | null, sectionName: str
 
 export type PurchaseInput = { date: string; quantity: number; unitPrice: number };
 
-type ReceiptFields = StoredReceipt | { receiptUrl: null; receiptPathname: null } | undefined;
+type ReceiptFields = StoredReceipt | { receiptPathname: null } | undefined;
 
 /** R-L1: purchase + its cash row, inside the caller's transaction. */
 async function createPurchaseTx(tx: Tx, itemId: string, p: PurchaseInput, receipt: ReceiptFields) {

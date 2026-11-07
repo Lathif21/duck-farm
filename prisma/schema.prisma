@@ -76,8 +76,7 @@ model CashEntry {
   unitPrice   Int?          // rupiah
   total       Int           // rupiah, > 0
 
-  receiptUrl      String?   // Vercel Blob URL (expenses only)
-  receiptPathname String?   // Blob pathname, used to delete the file
+  receiptPathname String?   // object key in the private receipts bucket (expenses only)
 
   shoppingPurchaseId String?           @unique
   shoppingPurchase   ShoppingPurchase? @relation(fields: [shoppingPurchaseId], references: [id], onDelete: Cascade)

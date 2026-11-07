@@ -1,7 +1,7 @@
 # Pembukuan Cold Storage Bebek
 
 Cash book, construction shopping list and (Phase 2) duck-meat warehouse for a family cold-storage business.
-SvelteKit 3 (Svelte 5) · TypeScript · Prisma 7 · Neon Postgres · Tailwind v4 · Vercel · Vercel Blob.
+SvelteKit 3 (Svelte 5) · TypeScript · Prisma 7 · Neon Postgres · Tailwind v4 · Vercel · Neon Object Storage (receipts).
 
 The plan lives in [`.claude/docs/`](.claude/docs/README.md); open questions in
 [`11-open-questions-and-proposals.md`](.claude/docs/11-open-questions-and-proposals.md).
@@ -15,7 +15,7 @@ Daftar Belanja Bangunan (starter list, purchases linked to the cash book, buy-ag
 ## First-time setup
 
 1. **Neon** — create a project in **AWS ap-southeast-1 (Singapore)** with branches `main` (production) and `dev`.
-2. **Vercel Blob** — create a **private** Blob store; copy its `BLOB_READ_WRITE_TOKEN`. (Optional at first: without it, saving with a receipt shows "Penyimpanan nota belum disiapkan".)
+2. **Neon Object Storage** — create a **private** bucket (e.g. `uploads`) on the branch. Neon prints its credentials as `AWS_*`; put them in `.env` under the `S3_*` names from `.env.example` (Vercel reserves the `AWS_*` names). Optional at first: without them, saving with a receipt shows "Penyimpanan nota belum disiapkan".
 3. Copy `.env.example` to `.env` and fill in the `dev` branch URLs (pooled `DATABASE_URL`, direct `DIRECT_URL`).
 4. Install, migrate, seed, create an admin:
    ```sh
@@ -44,6 +44,6 @@ The seed is idempotent: re-running never duplicates the initial capital or the s
 ## Deploy (Vercel)
 
 - Functions run in `sin1` (set in `vite.config.ts`). Install the Neon–Vercel integration so previews get their own branch.
-- Env vars: `DATABASE_URL` (needed at build time too — SvelteKit 3 validates it), `DIRECT_URL`, `BLOB_READ_WRITE_TOKEN`.
+- Env vars: `DATABASE_URL` (needed at build time too — SvelteKit 3 validates it), `DIRECT_URL`, `S3_ENDPOINT`, `S3_REGION`, `S3_BUCKET`, `S3_ACCESS_KEY_ID`, `S3_SECRET_ACCESS_KEY`.
 - Run `npm run db:deploy` before each production deploy; never `migrate dev` against `main`.
 - Backups: Neon point-in-time restore. The free plan keeps 6 hours of history; check the plan's window before launch (T-24).

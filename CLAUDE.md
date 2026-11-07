@@ -1,6 +1,6 @@
 # CLAUDE.md — Pembukuan Cold Storage Bebek
 
-Cash book, construction shopping list and duck-meat warehouse app for a family cold-storage business. Stack: SvelteKit (Svelte 5) + TypeScript + Prisma + Neon Postgres + Tailwind, deployed on Vercel, receipts on Vercel Blob.
+Cash book, construction shopping list and duck-meat warehouse app for a family cold-storage business. Stack: SvelteKit (Svelte 5) + TypeScript + Prisma + Neon Postgres + Tailwind, deployed on Vercel, receipts on Neon Object Storage (private bucket, S3 API).
 
 ## Read before working
 

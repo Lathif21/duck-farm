@@ -8,9 +8,9 @@
 	},
 	"scripts": {
 		"dev": "vite dev",
-		"build": "prisma generate && vite build",
+		"build": "svelte-kit sync && prisma generate && vite build",
 		"preview": "vite preview",
-		"prepare": "prisma generate && svelte-kit sync || echo ''",
+		"prepare": "svelte-kit sync && prisma generate || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --check . && eslint .",
@@ -51,10 +51,10 @@
 		"vitest": "^4.1.8"
 	},
 	"dependencies": {
+		"@aws-sdk/client-s3": "^3.1164.0",
 		"@node-rs/argon2": "^2.2.2",
 		"@prisma/adapter-neon": "^7.10.1",
 		"@prisma/client": "^7.10.1",
-		"@vercel/blob": "^2.8.2",
 		"jspdf": "^4.2.1",
 		"jspdf-autotable": "^5.0.9",
 		"zod": "^4.6.7"

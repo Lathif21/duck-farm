@@ -62,7 +62,6 @@ CREATE TABLE "CashEntry" (
     "quantity" DECIMAL(10,2),
     "unitPrice" INTEGER,
     "total" INTEGER NOT NULL,
-    "receiptUrl" TEXT,
     "receiptPathname" TEXT,
     "shoppingPurchaseId" TEXT,
     "duckMovementId" TEXT,
