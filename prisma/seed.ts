@@ -14,8 +14,8 @@ const url = process.env.DIRECT_URL;
 if (!url) throw new Error('DIRECT_URL is not set (see .env.example).');
 const db = new PrismaClient({ adapter: new PrismaNeon({ connectionString: url }) });
 
-// Date of the initial capital entry. Open question T1 (doc 11): the owner hasn't given the
-// project start date yet. Set CAPITAL_DATE=YYYY-MM-DD; defaults to today in Jakarta.
+// Date of the initial capital entry. Set CAPITAL_DATE=YYYY-MM-DD; defaults to today in Jakarta.
+// The admin can correct the date, amount and note later in the app (R-C3).
 const capitalDate =
 	process.env.CAPITAL_DATE ??
 	new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Jakarta' }).format(new Date());

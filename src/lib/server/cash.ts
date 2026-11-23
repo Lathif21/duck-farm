@@ -270,7 +270,7 @@ export async function createManualEntry(
 async function findManual(tx: Tx, id: string) {
 	const existing = await tx.cashEntry.findUnique({ where: { id } });
 	if (!existing) throw new UserError('Catatan ini sudah tidak ada. Muat ulang halaman.');
-	// Initial capital: no edit/delete until T1. Linked rows: through their source only (R-L4).
+	// Initial capital: updateInitialCapital only (R-C3). Linked rows: through their source only (R-L4).
 	if (existing.source !== 'MANUAL') throw new UserError('Catatan ini tidak bisa diubah di sini.');
 	return existing;
 }
@@ -310,6 +310,20 @@ export async function deleteManualEntry(id: string): Promise<void> {
 		});
 		return { result: undefined, oldPathname: existing.receiptPathname };
 	});
+}
+
+// ---------------------------------------------------------------------------
+// Initial capital (R-C3): date, amount and note can be edited; it can never be deleted.
+
+export type CapitalInput = { date: string; description: string; total: number };
+
+export async function updateInitialCapital(id: string, input: CapitalInput): Promise<void> {
+	if (input.total > MAX_INT) throw new UserError('Jumlah terlalu besar.');
+	const { count } = await db.cashEntry.updateMany({
+		where: { id, source: 'INITIAL_CAPITAL' },
+		data: { date: fromDateOnly(input.date), description: input.description, total: input.total }
+	});
+	if (count === 0) throw new UserError('Catatan ini sudah tidak ada. Muat ulang halaman.');
 }
 
 export async function getReceiptPathname(entryId: string): Promise<string | null> {

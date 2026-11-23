@@ -8,7 +8,7 @@ Build Phase 1 first; Phase 2 follows. Phase 2 has open questions (`11`) that mus
 - Summary cards: Saldo Kas, Total Uang Masuk Lain, Total Uang Keluar, Isi Gudang Bebek (shows 0 until Phase 2).
 - **Menu 1 — Buku Uang Kas:** manual income/expense entries, create/edit/delete, categories via "pick or add new" dropdown (separate lists for income and expense, start empty), optional receipt upload on every expense.
 - **Menu 3 — Daftar Belanja Bangunan:** admin-editable shopping list with work sections, plain-language explanations, record purchase → cash book in one click, buy again with a reminder of the previous purchase, add new items.
-- Initial capital Rp 70.000.000 entry (edit rules TBD — `11`, T1).
+- Initial capital Rp 70.000.000 entry: date, amount and description editable, never deleted (R-C3).
 - PDF report (contents: `08`, PDF report).
 - All tables: search, date range filter, sort per column, 20 rows/page, cards on phone.
 
@@ -26,7 +26,7 @@ Build Phase 1 first; Phase 2 follows. Phase 2 has open questions (`11`) that mus
 | Data in browser localStorage, offline-first | Neon Postgres, online. Offline is **TBD T4**                                  | Shared data across family phones                   |
 | iOS Liquid Glass, text `#0f172a`            | Eggsy reference palette (`06`)                                                | Owner's design choice                              |
 | Shopping list items 1–12 fixed              | Starter list, editable by admin; starter content approved by owner (Nov 2026) | Original list came from AI suggestions, unverified |
-| Initial capital row "permanent"             | Editable in future; rules TBD (T1)                                            | Waiting on Tante                                   |
+| Initial capital row "permanent"             | Date, amount and description editable; never deleted (R-C3)                   | Owner decision, 23 Nov 2026                        |
 | Delete only                                 | Edit and delete                                                               | Owner decision                                     |
 | —                                           | Receipt upload on expenses, PDF report, login                                 | Owner/team additions                               |
 

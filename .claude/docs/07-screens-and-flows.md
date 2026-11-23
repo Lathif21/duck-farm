@@ -38,7 +38,7 @@ Fields "Nama Pengguna", "Kata Sandi"; button "Masuk". Error: "Nama pengguna atau
 4. **History table** (`DataTable`):
    - Columns: Tanggal · Kelompok Keperluan · Catatan · Masuk · Keluar · Sisa · Nota · Aksi
    - Masuk shown `+ Rp …` green; Keluar `− Rp …` red.
-   - Aksi: manual rows "Ubah" / "Hapus"; linked rows "Ubah di Daftar Belanja" / "Ubah di Gudang Bebek" (R-L4); initial capital row: none (T1).
+   - Aksi: manual rows "Ubah" / "Hapus"; linked rows "Ubah di Daftar Belanja" / "Ubah di Gudang Bebek" (R-L4); initial capital row: "Ubah" only, opens the "Ubah Modal Awal" form (date, amount, note); no "Hapus" (R-C3).
    - Phone card: line 1 date + category label; line 2 note (full, wrapped); line 3 amount big with sign; footer: nota icon + actions.
    - Empty state: "Belum ada catatan. Tekan Uang Masuk atau Uang Keluar untuk mulai."
 

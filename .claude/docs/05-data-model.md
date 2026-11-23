@@ -218,7 +218,7 @@ FROM "DuckMovement" GROUP BY "duckTypeId";
 
 ## Seed (`prisma/seed.ts`)
 
-1. Initial capital entry (R-C3), date = project start date (**ask the owner**; it's part of T1).
+1. Initial capital entry (R-C3), date from `CAPITAL_DATE` (defaults to today); the admin can correct it in the app (R-C3).
 2. Work sections + starter shopping items from `12-seed-shopping-list.md`, `isSeed = true`.
 3. No categories, no duck types (both start empty).
 4. Admin users: created with the `create-admin` script, not the seed.

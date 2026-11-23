@@ -8,6 +8,7 @@ import {
 	getReport,
 	getSummary,
 	listCashEntries,
+	updateInitialCapital,
 	updateManualEntry
 } from './cash';
 import {
@@ -165,12 +166,30 @@ describe.skipIf(!run)('money flow against Postgres', () => {
 		expect((await getSummary()).balance).toBe(70_000_000);
 	});
 
-	it('initial capital cannot be edited or deleted (T1 interim)', async () => {
+	it('initial capital: date, amount and note can be edited; it can never be deleted (R-C3)', async () => {
 		const capital = await db.cashEntry.findFirstOrThrow({ where: { source: 'INITIAL_CAPITAL' } });
+		await updateInitialCapital(capital.id, {
+			date: '2026-10-15',
+			description: 'Modal dari Tante',
+			total: 75_000_000
+		});
+		const updated = await db.cashEntry.findUniqueOrThrow({ where: { id: capital.id } });
+		expect(updated.date.toISOString().slice(0, 10)).toBe('2026-10-15');
+		expect(updated.description).toBe('Modal dari Tante');
+		expect(await getSummary()).toMatchObject({ balance: 75_000_000, otherIncome: 0 });
+
 		await expect(deleteManualEntry(capital.id)).rejects.toBeInstanceOf(UserError);
 		await expect(updateManualEntry(capital.id, entry('x', 1), undefined)).rejects.toBeInstanceOf(
 			UserError
 		);
+	});
+
+	it('the initial capital editor cannot change any other row (R-C3)', async () => {
+		const id = await createManualEntry('IN', entry('Tambahan modal', 1_000_000), undefined);
+		await expect(
+			updateInitialCapital(id, { date: '2026-11-07', description: 'x', total: 5 })
+		).rejects.toBeInstanceOf(UserError);
+		expect((await db.cashEntry.findUniqueOrThrow({ where: { id } })).total).toBe(1_000_000);
 	});
 
 	it('purchase creates exactly one cash row with the same total and date (R-L1)', async () => {

@@ -7,6 +7,7 @@
 	import { formatDate } from '#lib/dates.js';
 	import { formatRupiah, formatSignedRupiah } from '#lib/money.js';
 	import { downloadReportPdf, type ReportJson } from '#lib/report-pdf.js';
+	import CapitalForm from './CapitalForm.svelte';
 	import EntryForm from './EntryForm.svelte';
 	import type { PageProps } from './$types';
 
@@ -101,13 +102,17 @@
 	<div bind:this={formBox} class="scroll-mt-4">
 		{#if mode}
 			{#key `${mode}:${editing?.id ?? 'new'}`}
-				<EntryForm
-					direction={mode}
-					categories={mode === 'IN' ? data.incomeCategories : data.expenseCategories}
-					today={data.today}
-					entry={editing}
-					onDone={close}
-				/>
+				{#if editing?.source === 'INITIAL_CAPITAL'}
+					<CapitalForm entry={editing} onDone={close} />
+				{:else}
+					<EntryForm
+						direction={mode}
+						categories={mode === 'IN' ? data.incomeCategories : data.expenseCategories}
+						today={data.today}
+						entry={editing}
+						onDone={close}
+					/>
+				{/if}
 			{/key}
 		{/if}
 	</div>
@@ -188,6 +193,10 @@
 				message="Hapus catatan ini? Saldo kas akan dihitung ulang."
 			/>
 		</div>
+	{:else if r.source === 'INITIAL_CAPITAL'}
+		<button type="button" class="btn-secondary min-h-11 px-4 py-1" onclick={() => open('IN', r)}
+			>Ubah</button
+		>
 	{:else if r.source === 'SHOPPING' && r.itemId}
 		<a
 			href={resolve('/(app)/belanja/[itemId]', { itemId: r.itemId })}

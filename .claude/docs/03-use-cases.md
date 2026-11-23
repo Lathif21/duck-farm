@@ -15,7 +15,7 @@ UC01–UC06 come from the PRD (adapted to decisions). UC07+ are additions agreed
 - **Pre:** fresh database after seeding.
 - Summary cards show: Saldo Kas **Rp 70.000.000**, Total Uang Masuk Lain **Rp 0**, Total Uang Keluar **Rp 0**, Isi Gudang Bebek **0 Kg (0 Ekor/Pak)**.
 - Buku Uang Kas has one row: "Uang Tunai dari Tante untuk Modal Pembangunan Cold Storage" **+ Rp 70.000.000**.
-- Editing/deleting this row: **TBD T1**. Until decided, it has no edit or delete button.
+- This row has an "Ubah" button (date, amount, description) but no "Hapus" button (R-C3).
 
 ## UC02 — Record a purchase from the shopping list _(Phase 1)_
 

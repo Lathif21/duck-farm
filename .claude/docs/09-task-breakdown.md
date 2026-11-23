@@ -29,9 +29,9 @@ Tickets in order. Each is done only when its **Done when** items pass (see also 
 
 ## M3 — Buku Uang Kas (Phase 1)
 
-- **T-12 Seed:** initial capital row (R-C3; start date: ask owner, part of T1).
+- **T-12 Seed:** initial capital row (R-C3; date from `CAPITAL_DATE`, editable in the app).
 - **T-13 Manual income/expense:** create with categories (R-C5), receipt on expense.
-- **T-14 Edit/delete manual entries** (initial capital row has no actions until T1).
+- **T-14 Edit/delete manual entries** (initial capital row: edit only, never delete; R-C3).
 - **T-15 History table** with source labels (R-C6), linked-row actions (R-L4), running balance.
   Done when: UC01 and UC06 pass end to end; summary cards match a hand calculation on a 20-row fixture.
 

@@ -10,7 +10,7 @@ Every rule has an ID; reference it in code comments and tests (e.g. `// R-C2`).
   - `Total Uang Masuk Lain = Σ income, excluding the initial capital entry` (sales, extra capital, anything else)
   - `Total Uang Keluar = Σ expense`
   - `Isi Gudang Bebek = Σ kg in − Σ kg out` and `Σ ekor in − Σ ekor out`, across all duck types _(Phase 2; shows 0 before)_
-- **R-C3 — Initial capital.** Seeded once as an income entry, source `INITIAL_CAPITAL`, Rp 70.000.000, description "Uang Tunai dari Tante untuk Modal Pembangunan Cold Storage". Edit/delete: **TBD T1**; until then no edit/delete in the UI or API.
+- **R-C3 — Initial capital.** Seeded once as an income entry, source `INITIAL_CAPITAL`, Rp 70.000.000, description "Uang Tunai dari Tante untuk Modal Pembangunan Cold Storage". The admin can edit its date, amount and description (owner decision, 23 Nov 2026). It can never be deleted. No change history is kept; only the latest value exists, like every other row.
 - **R-C4 — Manual entries** have: date, direction (income/expense), category, description, quantity, unit price, total = `round(quantity × unitPrice)`. Expenses may have a receipt.
 - **R-C5 — Categories.** Separate lists for income and expense; both start empty. Names are trimmed and unique per direction, case-insensitive ("listrik" = "Listrik"; the first spelling is kept). Created inline from the dropdown (UC11). Rename/delete of categories: out of scope until requested.
 - **R-C6 — Source labels.** Linked rows show a fixed label in the category column instead of a user category: `Belanja Pembangunan` (shopping purchase), `Beli Daging Bebek` (duck in), `Jual Daging Bebek` (duck out), `Modal Awal` (initial capital).

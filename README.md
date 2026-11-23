@@ -21,7 +21,7 @@ Daftar Belanja Bangunan (starter list, purchases linked to the cash book, buy-ag
    ```sh
    npm install
    npm run db:deploy          # applies prisma/migrations
-   CAPITAL_DATE=2026-11-01 npm run db:seed   # initial capital date: still open question T1; defaults to today
+   CAPITAL_DATE=2026-11-01 npm run db:seed   # initial capital date; defaults to today, editable in the app
    npm run create-admin -- --username tante --name "Tante"
    npm run dev
    ```

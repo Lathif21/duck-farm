@@ -7,6 +7,7 @@ import {
 	deleteManualEntry,
 	listCashEntries,
 	listCategories,
+	updateInitialCapital,
 	updateManualEntry
 } from '#lib/server/cash.js';
 import {
@@ -46,6 +47,12 @@ const entrySchema = z.object({
 	unitPrice: zMoney
 });
 
+const capitalSchema = z.object({
+	date: zDate,
+	description: zText('Catatan'),
+	total: zMoney
+});
+
 export const actions: Actions = {
 	create: async ({ request }) => {
 		const form = await request.formData();
@@ -65,6 +72,14 @@ export const actions: Actions = {
 		return runMutation(form, () =>
 			updateManualEntry(String(form.get('id')), parsed.data, readReceiptChange(form))
 		);
+	},
+
+	// R-C3: the initial capital row; edit only, never deleted.
+	updateCapital: async ({ request }) => {
+		const form = await request.formData();
+		const parsed = parseForm(capitalSchema, form);
+		if (parsed.failure) return parsed.failure;
+		return runMutation(form, () => updateInitialCapital(String(form.get('id')), parsed.data));
 	},
 
 	delete: async ({ request }) => {
